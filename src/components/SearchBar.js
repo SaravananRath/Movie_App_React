@@ -18,15 +18,13 @@ export default class SearchBar extends Component {
     render() {
 
       return (
-       
         <div className="App">
+
         
-  
-            <h1>Hollywood Movie:</h1>
+          <h1>Hollywood Movie:</h1>
             <input type="text" name="name" onChange={this.handleChange} />
             <Link to={`result/${this.state.search}`}>My route</Link>
-
         </div>
-      );
+      )
     }
   }

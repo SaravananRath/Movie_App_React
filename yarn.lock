@@ -2,6 +2,17 @@
 # yarn lockfile v1
 
 
+"@coreui/coreui-plugin-npm-postinstall@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@coreui/coreui-plugin-npm-postinstall/-/coreui-plugin-npm-postinstall-1.0.2.tgz#6daeb2ec786580d9c0849b05bc3e8d0222d5c463"
+
+"@coreui/coreui@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@coreui/coreui/-/coreui-2.0.3.tgz#6fe070ba5f8d3a054aeee2fbc7018d960c810898"
+  dependencies:
+    "@coreui/coreui-plugin-npm-postinstall" "^1.0.2"
+    bootstrap "^4.1.1"
+
 "@coreui/icons@0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@coreui/icons/-/icons-0.2.0.tgz#76a1fc3cbbd35597e921a616fe553fde8ec54b78"

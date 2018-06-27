@@ -23,7 +23,7 @@ export default class SearchBar extends Component {
         
           <h1>Hollywood Movie:</h1>
             <input type="text" name="name" onChange={this.handleChange} />
-            <Link to={`result/${this.state.search}`}>My route</Link>
+            <Link to={`result/${this.state.search}`}>Search</Link>
         </div>
       )
     }

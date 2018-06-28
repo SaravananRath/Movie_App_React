@@ -15,35 +15,18 @@ class Routing extends Component{
     render(){
       return(
 
-        <div class="app sidebar-show aside-menu-show">
-          <header class="app-header navbar">
-          Movie Search
-          </header>
-          <div class="app-body">
-          <div class="sidebar">
-          </div>
-          <main class="main">
+
+ 
           <Router>
-            <div>
-                <ul>
-            <Link to="/">Search</Link>        
-                </ul>
-              <hr/>
-              
+            <div className = "content">
                 <Route exact path="/" component={SearchBar} />
                 <Route path="/result/:movieSearch" component={SearchResult}/>
                 <Route path="/movie/:id" component={Movie}/>
             </div>
           </Router>
-          </main>
-          <aside class="aside-menu">
-          Aside Menu
-          </aside>
-          </div>
-          <footer class="app-footer">
-         Footer Here
-          </footer>
-        </div>
+
+
+
 
       )
     }

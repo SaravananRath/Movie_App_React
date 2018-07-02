@@ -5,9 +5,9 @@ import { createStore, applyMiddleware } from 'redux';
 import './index.css';
 import Routing from './App';
 import thunk from 'redux-thunk';
-import rootReducer from './reducers/Reducer'
+import reducerFunc from './reducers/Reducer'
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(reducerFunc, applyMiddleware(thunk));
 const App = () => (
     <Provider store = {store}>
         <Routing />

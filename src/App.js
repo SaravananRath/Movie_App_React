@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-// import SearchResult from './components/SearchResult';
 import Search_Result_Container from './containers/Search_Result_Container'
 import Movie_Container from './containers/Movie_Container'
 import SearchBar from './components/SearchBar'
-// import DefaultHeader from './components/Header' 
 import './App.css';
 import '@coreui/coreui/dist/css/coreui.min.css';
 import 'popper.js/dist/popper.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import '@coreui/coreui/dist/js/coreui.min.js'
-import { BrowserRouter as Router, Route, Link} from "react-router-dom";
+import { BrowserRouter as Router, Route} from "react-router-dom";
 
 
 
@@ -20,7 +18,7 @@ class Routing extends Component{
         <Router>
           <div className="app sidebar-show aside-menu-show">
             <header style={headerStyle} className="app-header navbar"  >
-           <Link to={'/'}     ><h1 style={divStyle}>The Movie Database</h1></Link>
+          <h1 style={divStyle}>The Movie Database</h1>
                
             </header>
             <div className="app-body">

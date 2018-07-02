@@ -1,19 +1,14 @@
 import axios from 'axios';
+import {Movie_App_API} from '../const'
 
-export const addValue = (text) => {
-    return {
-        type: 'INCREMENT',
-        text
-    }
-}
 
 export function getResultData(search) {
     return(dispatch) => {
         axios.get('https://api.themoviedb.org/3/search/movie',
             {
             params: {
-            api_key: '4b6b3b4b55597a6d97748a53f91b1d20',
-            query: `${search}`
+            api_key: Movie_App_API,
+            query: search
             }
             })
             .then(response => {
@@ -31,7 +26,7 @@ export function getMovieData(id) {
         axios.get(`https://api.themoviedb.org/3/movie/${id}`,
             {
             params: {
-            api_key: '4b6b3b4b55597a6d97748a53f91b1d20'
+            api_key:Movie_App_API
             }
             })
             .then(response => {

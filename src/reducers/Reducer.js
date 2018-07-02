@@ -4,21 +4,19 @@ const intialState = {
 }
 
 const reducerFunc = (state = intialState,action) => {
+    // debugger
     switch(action.type){
         case 'RESULT_API_CALL':    
         return {
-            movies:action.movies,
-            movie:''
-            };
+            movies:action.movies
+        };
         case 'MOVIE_API_CALL':
         return {
-            movie:action.movie,
-            movies:''
-            
+            movie:action.movie
         }
         default:
-            return state;
-    }
+            return state    
+        }
 }
 
 export default reducerFunc

@@ -4,6 +4,9 @@ import React, { Component } from 'react';
 class MovieDetail extends Component {
 
  renderDetail() {
+  if(this.props.detail === undefined){
+    return(<div>No Details Found</div>)
+  }
   let movieDetail;
   movieDetail = <div>
   <p> <b>ID:</b>{this.props.detail.id}</p>
@@ -35,6 +38,9 @@ class Movie extends Component {
    this.props.getMovie()
  }
  renderTitle(){
+   if(this.props.movie === undefined){
+     return(<div>No Movies Found</div>)
+   }
     let movieName;
     movieName = <h2>
         {this.props.movie.original_title}
@@ -43,6 +49,9 @@ class Movie extends Component {
  }
  rednerPoster(){
    let moviePoster;
+   if(this.props.movie === undefined){
+    return(<div>No Poster Found</div>)
+  }
    moviePoster = 
    <img src={`https://image.tmdb.org/t/p/w500/${this.props.movie.poster_path}`} className="figure-img img-fluid rounded" alt="A generic square placeholder  with rounded corners in a figure." style={imageStyle}/> 
     return(moviePoster)

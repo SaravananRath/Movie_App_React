@@ -7,6 +7,9 @@ class RenderMovieList extends Component{
 
     render(){
         let list;
+        if(this.props.movieList === undefined){
+            return(<div>No Data</div>)
+        }
             list = this.props.movieList.map((x,i) => 
             <Link to={{pathname:`/movie/${x.id}` }} key={i}>
                 <li className="media" style={{'padding':'10px 5px 10px 5px'}}>
@@ -31,13 +34,14 @@ export default class SearchResult extends Component{
     }
         
         render(){    
-            return(
-                <ul className="list-unstyled" style={divStyle}>
-                
-                   <RenderMovieList movieList = {this.props.movies}/>
-                 </ul>
-            )
-        }
+          
+                return(
+                    <ul className="list-unstyled" style={divStyle}>
+                    
+                    <RenderMovieList movieList = {this.props.movies}/>
+                    </ul>
+                )
+    }
     }
 
     const divStyle = {

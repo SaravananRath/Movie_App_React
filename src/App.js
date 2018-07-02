@@ -1,36 +1,56 @@
 import React, { Component } from 'react';
 import './App.css';
-import SearchResult from './components/SearchResult';
+// import SearchResult from './components/SearchResult';
+import Search_Result_Container from './containers/Search_Result_Container'
+import Movie_Container from './containers/Movie_Container'
 import SearchBar from './components/SearchBar'
-import Movie from './components/Movie' 
 // import DefaultHeader from './components/Header' 
+import './App.css';
 import '@coreui/coreui/dist/css/coreui.min.css';
 import 'popper.js/dist/popper.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import '@coreui/coreui/dist/js/coreui.min.js'
+import { BrowserRouter as Router, Route, Link} from "react-router-dom";
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+
 class Routing extends Component{
-
     render(){
       return(
+        <Router>
+          <div className="app sidebar-show aside-menu-show">
+            <header style={headerStyle} className="app-header navbar"  >
+           <Link to={'/'}     ><h1 style={divStyle}>The Movie Database</h1></Link>
+               
+            </header>
+            <div className="app-body">
 
-
- 
-          <Router>
-            <div className = "content">
-                <Route exact path="/" component={SearchBar} />
-                <Route path="/result/:movieSearch" component={SearchResult}/>
-                <Route path="/movie/:id" component={Movie}/>
+            <main className="main">
+            
+                <div className = "content">
+                    <Route exact path="/" component={SearchBar} />
+                    <Route path="/result/:movieSearch" component={Search_Result_Container}/>
+                    <Route path="/movie/:id" component={Movie_Container}/>
+                </div>
+            
+            </main>
             </div>
-          </Router>
-
-
-
-
-      )
+            <footer className="app-footer">
+            Saravanan Copyrights Limited &copy;2018
+            </footer>   
+            </div>
+            </Router>
+        )
     }
 }
-
+const headerStyle = {
+    marginTop : '10px',
+    background: 'black',
+    color: 'white', 
+    paddingLeft: '20px'  
+}
+const divStyle = {
+    marginTop:'20px'
+  };
 
 export default Routing;

@@ -15,15 +15,28 @@ export default class SearchBar extends Component {
 
 
 
+ 
+
   render() {
 
     return (
       
-      <div className="App">
-      <h1>Hollywood Movie:</h1>
-        <input type="text" name="name" onChange={this.handleChange} />
-       <Link to={`result/${this.state.search}`}>Search</Link>
-      </div>
-    )
+    <div style={divStyle}>
+      <h2>HOLLYWOOD MOVIE </h2>
+      <p>
+      <input type="text" name="name" onChange={this.handleChange}/></p>
+     <p> <Link to={`result/${this.state.search}`}>SEARCH</Link></p>
+    </div>
+      )
   }
 }
+
+
+const divStyle = {
+  marginTop:'5%',
+  padding: '70px 0',
+  // border:' 3px solid green',
+  textAlign:' center',
+
+
+};

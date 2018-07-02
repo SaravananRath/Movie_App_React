@@ -1,8 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {render} from 'react-dom'
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
 import './index.css';
 import Routing from './App';
-import registerServiceWorker from './registerServiceWorker';
+import thunk from 'redux-thunk';
+import rootReducer from './reducers/Reducer'
 
-ReactDOM.render(<Routing />, document.getElementById('root'));
-registerServiceWorker();
+const store = createStore(rootReducer, applyMiddleware(thunk));
+const App = () => (
+    <Provider store = {store}>
+        <Routing />
+    </Provider>
+
+);
+
+
+render(<App/>,document.getElementById('root'));
+
+

@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
-import {Movie_App_API} from '../const';
-import axios from 'axios';
 import { Link } from "react-router-dom";
+
 class RenderMovieList extends Component{
+
+
 
     render(){
         let list;
             list = this.props.movieList.map((x,i) => 
-            <Link to={{pathname:`/movie/${x.id}` }} key={i}> <li >{x.title}</li></Link>
+            <Link to={{pathname:`/movie/${x.id}` }} key={i}>
+                <li className="media" style={{'padding':'10px 5px 10px 5px'}}>
+                <img className="mr-3" src= {`https://image.tmdb.org/t/p/w500/${x.poster_path}`} alt="Generic placeholder" width="150px"/>
+                <div className="media-body">
+                    <h5 className="mt-0 mb-1">{x.title}</h5>
+                </div>
+          </li></Link>
         )
          if (list.length === 0) {
             return(<div>No results found</div>)
@@ -18,40 +25,22 @@ class RenderMovieList extends Component{
     }
 
 export default class SearchResult extends Component{
-    constructor(props){
-        super(props)
-        this.state={
-            movies: []
-        }
-        
-    }
+
     componentDidMount(){   
-        this.getMoviesList();
+        this.props.getData()
     }
         
-    getMoviesList(){
-        let { movieSearch } = this.props.match.params
-
-        axios.get('https://api.themoviedb.org/3/search/movie', {
-            params: {
-            api_key: Movie_App_API,
-            query: movieSearch
-            }
-        })
-            .then(response => {
-                this.setState({movies: response.data.results})
-            })
-            .catch(function (error) {
-                console.log(error);
-            });   
-    }
         render(){    
-            // let {movies = []} = this.state;
             return(
-                <ul>
-                <RenderMovieList movieList = {this.state.movies}/>
-                </ul>
-                )
+                <ul className="list-unstyled" style={divStyle}>
+                
+                   <RenderMovieList movieList = {this.props.movies}/>
+                 </ul>
+            )
         }
     }
 
+    const divStyle = {
+        margin:' 0 auto',
+        width:' 500px'
+      };

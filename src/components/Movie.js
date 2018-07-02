@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
-import { Movie_App_API } from '../const';
-import axios from 'axios';
+
 
 class MovieDetail extends Component {
 
  renderDetail() {
   let movieDetail;
   movieDetail = <div>
-   ID:{this.props.detail.id}
-  <p> {this.props.detail.overview}</p>
+  <p> <b>ID:</b>{this.props.detail.id}</p>
+  <p> <b>Budget:</b> {this.props.detail.budget}</p>
+  <p> <b>Tagline:</b> {this.props.detail.tagline}</p>
+  <p> <b>Description:</b> {this.props.detail.overview}</p>
+  <p> <b>Popularity:</b> {this.props.detail.popularity}</p>
+  <p> <b>Revenvue:</b> {this.props.detail.revenue}</p>
+  <p> <b>Runtime:</b> {this.props.detail.runtime}</p>
+  <p> <b>Status:</b> {this.props.detail.status}</p>
+  <p> <b>Release Date:</b> {this.props.detail.release_date}</p>
+
     </div>
-  console.log(this.props.detail.id)
   if(this.props.detail.id === undefined){
       return(<div>No Movie Found</div>)
   }
@@ -24,56 +30,51 @@ class MovieDetail extends Component {
 }
 
 class Movie extends Component {
- constructor(props) {
-  super(props)
-  this.state = {
-   movie: {}
-  }
- }
- componentDidMount() {
-  const { id } = this.props.match.params
 
-  axios.get(`https://api.themoviedb.org/3/movie/${id}`, {
-   params: {
-    api_key: Movie_App_API,
-   }
-  })
-   .then(response => {
-    this.setState({ movie: response.data },)
-   })
-   .catch(function (error) {
-    console.log(error);
-   });
+ componentDidMount() {
+   this.props.getMovie()
  }
  renderTitle(){
     let movieName;
     movieName = <h2>
-        {this.state.movie.original_title}
+        {this.props.movie.original_title}
       </h2>
     return(movieName)
  }
+ rednerPoster(){
+   let moviePoster;
+   moviePoster = 
+   <img src={`https://image.tmdb.org/t/p/w500/${this.props.movie.poster_path}`} className="figure-img img-fluid rounded" alt="A generic square placeholder  with rounded corners in a figure." style={imageStyle}/> 
+    return(moviePoster)
+
+ }
  render() {
   return (
-   <div class="app sidebar-show aside-menu-show">
-    <header class="app-header navbar">
-    {this.renderTitle()}
-    </header>
-   <div class="app-body">
-    <div class="sidebar">
-    
-    </div>
-   <main class="main">
-   <MovieDetail detail={this.state.movie} />
-   </main>
+   <div style={divStyle} >
 
-   </div>
-   <footer class="app-footer">
-   Footer Here
-   </footer>
-   </div>
+    {this.renderTitle()}
+    {this.rednerPoster()} 
+    <div style ={innerDiv}>
+      <MovieDetail detail={this.props.movie} />
+    </div>
+    </div>
+
   )
  }
 }
 
+const divStyle = {
+  // border:'2px solid red',
+  margin:'20px 10px 5px 10px',
+  paddingLeft:'20px'
+}
+const imageStyle = {
+  float:'right',
+  padding: '10px 10px 10px 10px'
+  
+}
+const innerDiv = {
+  paddingLeft:'10px'
+}
 export default Movie
 

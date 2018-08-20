@@ -6,8 +6,9 @@ import './index.css';
 import Routing from './App';
 import thunk from 'redux-thunk';
 import reducerFunc from './reducers/Reducer'
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-const store = createStore(reducerFunc, applyMiddleware(thunk));
+const store = createStore(reducerFunc, composeWithDevTools(applyMiddleware(thunk)));
 const App = () => (
     <Provider store = {store}>
         <Routing />
